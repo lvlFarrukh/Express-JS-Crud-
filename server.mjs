@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import cors from "cors"
 
 const port = process.env.PORT || 3001;
 const app = express();
@@ -8,6 +9,10 @@ const user = [];
 
 app.use(express.json());
 app.use(morgan('short'));
+
+app.use(cors({
+    origin: '*'
+}));
 
 app.get('/', (req, res) => {
     res.send("Server is working")
